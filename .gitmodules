@@ -1,3 +1,0 @@
-[submodule "vendor/interface-reflector"]
-	path = vendor/interface-reflector
-	url = git@hipeland.org:interface-reflector
