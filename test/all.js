@@ -39,13 +39,13 @@ all.test('basic usage', function() {
 
   });
 
-  var tgt = 'Loaded case My Widget\n'+
+  var tgt = new RegExp('^Loaded case My Widget\n'+
     'Started\n'+
-    '.\n'+
-    'Finished in 0 seconds.\n'+
-    'ohai in red\n1 tests, 1 assertions, 0 failures, 0 errors\n';
+    '\\.\n'+
+    'Finished in \\d+ seconds\\.\n'+
+    '1 tests, 1 assertions, 0 failures, 0 errors\n$', 'm');
   var have = fu.uncolorize(this.lastOutput);
-  this.assert.equal(tgt, have);
+  this.assert.ok(tgt.test(have));
 });
 
 
