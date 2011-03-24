@@ -5,8 +5,6 @@
 var fu = require('../lib/fap-unit');
 var all = fu.testCase('all');
 
-
-
 all.test('basic usage', function() {
 
   require.paths.unshift(__dirname + '/../lib'); // make below prettier
@@ -19,13 +17,13 @@ all.test('basic usage', function() {
     function addTwo(a, b) { return a + b; }
 
     // require the module
-    var fapunit = require('fap-unit');
+    var fapunit = require("fap-unit");
 
     // make a test case object, choose a name
-    var tc = fapunit.testCase('My Widget');
+    var tc = fapunit.testCase("My Widget");
 
     // add a test function to the test case, give it a name
-    tc.test('add should work', function(){
+    tc.test("add should work", function(){
 
       var res = addTwo(1, 2);
 
