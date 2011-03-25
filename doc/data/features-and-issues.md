@@ -1,7 +1,7 @@
-page-title-short: features/issues
+page-title-short: Features/Issues
 directory-index: 5
 
-# fap-doc: features and issues
+# fap-doc: Features and Issues
 
 ## Features
 

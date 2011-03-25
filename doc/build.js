@@ -18,8 +18,8 @@ require('fap-doc/petrify-hacks').hackPetrify(function(h) {
   h.includeStrangeDataFiles(['../../README.md']);
   h.setMetadata('../../README.md', {
     'directory-index'   : 1,
-    'page-title-short'  : "intro",
-    'code-blocks'       : '[js,none,none]'
+    'page-title-short'  : "Intro",
+    'code-blocks'       : '[js,{class:console},none]'
   });
 });
 
