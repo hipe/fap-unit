@@ -1,40 +1,45 @@
 #!/usr/bin/env node
 ;
 
-
-var fu = require('../lib/fap-unit');
-var all = fu.testCase('all');
-
-all.test('basic usage', function() {
-
-  require.paths.unshift(__dirname + '/../lib'); // make below prettier
-
+require.paths.unshift(__dirname + '/../lib'); // make below prettier
+                                              // @fixme read up on it
+var fu = require('fap-unit');
+fu.testCase(exports, 'all', {
+"basic usage" : function () {
   this.captureOutput(function(){
+    // (don't actually use the real exports in the story below!)
+    var exports = {};
 
     // start story "basic usage"
 
-    // here's some code you want to test
-    function addTwo(a, b) { return a + b; }
-
-    // require the module
+    // require the module (usually at the top of your test file)
     var fapunit = require("fap-unit");
 
-    // make a test case object, choose a name
-    var tc = fapunit.testCase("My Widget");
+    // here's some code you want to test (usually in another module)
+    function addTwo(a, b) { return a + b; }
 
-    // add a test function to the test case, give it a name
-    tc.test("add should work", function(){
 
-      var res = addTwo(1, 2);
+    // super shorthand way to create a testcase object, give it a name
+    // and assign it some tests.  we usually want to turn the module
+    // (`exports`) into the testcase so we can run it in a suite.
 
-      this.assert.equal(3, res, "result should be 3");
+    require("fap-unit").testCase(exports, "My Widget", {
 
-    });
+      // name your test function something meaningful to you
+      "add should work" : function() {
 
-    tc.run(); // for now we run this thing explicitly
+        this.assert.equal(3, addTwo(1,2), "result should be 3");
+
+      }
+    }).run();
+
+    // experimental: run() must be called at the end of your file
+    // if you want to be able to run the file directly from the command line
+    // (or you would otherwise like to run the tests explicitly.)
+
+    // (when this file is pulled in as a module, the run is deactivated.)
 
     // end story
-
   });
 
   var tgt = new RegExp('^Loaded case My Widget\n'+
@@ -43,8 +48,7 @@ all.test('basic usage', function() {
     'Finished in \\d+ seconds\\.\n'+
     '1 tests, 1 assertions, 0 failures, 0 errors\n$', 'm');
   var have = fu.uncolorize(this.lastOutput);
-  this.assert.ok(tgt.test(have));
-});
 
+  this.assert.ok(tgt.test(have), 'derpie derpie');
 
-all.run();
+}}).run();
