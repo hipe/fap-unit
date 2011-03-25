@@ -12,32 +12,37 @@ fu.testCase(exports, 'all', {
 
     // start story "basic usage"
 
-    // require the module (usually at the top of your test file)
-    var fapunit = require("fap-unit");
-
     // here's some code you want to test (usually in another module)
     function addTwo(a, b) { return a + b; }
 
 
-    // super shorthand way to create a testcase object, give it a name
-    // and assign it some tests.  we usually want to turn the module
-    // (`exports`) into the testcase so we can run it in a suite.
+    // To create a testCase object (the shorthand way):
+    // [if we turn `exports` into the test case, we can
+    //   export it as a module to the test suite]
+    // [give a meaningful name for more useful reports]
+    // [pass it some tests]
 
     require("fap-unit").testCase(exports, "My Widget", {
 
       // name your test function something meaningful to you
-      "add should work" : function() {
+      "addThese() should work" : function() {
 
-        this.assert.equal(3, addTwo(1,2), "result should be 3");
+        // do some setup and run your stuff
+        var res = addTwo(1,2);
+
+        // use the familiar assert functions
+        this.assert.equal(3, res, "result should be 3");
 
       }
     }).run();
 
-    // experimental: run() must be called at the end of your file
-    // if you want to be able to run the file directly from the command line
-    // (or you would otherwise like to run the tests explicitly.)
+    // (experimental: run() must be called at the end of your file
+    // if you want to be able to run the file directly from the
+    // command line (or you would otherwise like to run the
+    // tests explicitly.)
 
-    // (when this file is pulled in as a module, the run is deactivated.)
+    // run() is deactiviated when this file is pulled in
+    // as a module)
 
     // end story
   });
