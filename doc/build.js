@@ -19,7 +19,7 @@ require('fap-doc/petrify-hacks').hackPetrify(function(h) {
   h.setMetadata('../../README.md', {
     'directory-index'   : 1,
     'page-title-short'  : "Intro",
-    'code-blocks'       : '[js,{class:console},none]'
+    'code-blocks'       : '[js,{class:console},console]'
   });
 });
 
