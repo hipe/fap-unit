@@ -16,7 +16,7 @@ feel of ruby test-unit, within its set of [features](features-and-issues.html).
 
 
 
-## Usage
+## Basic Usage
 
 Here is a basic example: in a file `test/test-foo.js`:
 
@@ -31,3 +31,6 @@ You will see the output:
 
     (see: test/all/"basic usage"/output)
 
+## Advanced Usage
+
+much more to come! ... @todo

@@ -23,7 +23,9 @@ fu.testCase(exports, 'all', {
 
         // start story "basic usage"
 
-        // here's some code you want to test (usually in another module)
+        // Let's say you wrote this code you want to test.
+        // (Often this is in another module that you pull in, but
+        // maybe not for single file distributions with in-file tests.
         function addTwo(a, b) { return a + b; }
 
 
@@ -36,24 +38,24 @@ fu.testCase(exports, 'all', {
         require("fap-unit").testCase(exports, "My Widget", {
 
           // name your test function something meaningful to you
-          "addThese() should work" : function() {
+          "addTwo() should work" : function() {
 
             // do some setup and run your stuff
             var res = addTwo(1,2);
 
             // use the familiar assert functions
-            this.assert.equal(3, res, "result should be 3");
+            this.equal(res, 3, "result should be 3");
 
           }
         }).run();
 
-        // (experimental: run() must be called at the end of your file
+        // For now, run() must be called at the end of your file
         // if you want to be able to run the file directly from the
         // command line (or you would otherwise like to run the
         // tests explicitly.)
-
-        // run() is deactiviated when this file is pulled in
-        // as a module)
+        
+        // when the fapdoc test runner loads the file as part
+        // of a test sweet, run() is effectivey deactivated.
 
         // end story
       })),
